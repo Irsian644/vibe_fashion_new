@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --header-h: 64px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Respect reduced motion globally */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-ink;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users */
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.DEFAULT");
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-8xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[11px] font-medium uppercase tracking-luxe text-stone;
+  }
+
+  .h-display {
+    @apply font-serif font-medium leading-[1.05] tracking-[-0.01em];
+  }
+
+  /* Primary button — ink fill */
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-7
+      text-[13px] font-medium uppercase tracking-[0.12em] transition-all duration-300
+      ease-luxe disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-cream hover:bg-charcoal active:scale-[0.98];
+  }
+  .btn-gold {
+    @apply btn bg-gold text-ink hover:bg-gold-soft active:scale-[0.98];
+  }
+  .btn-outline {
+    @apply btn border border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream;
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#1FA855] text-white hover:bg-[#178a45] active:scale-[0.98];
+  }
+  /* Instagram order CTA — brand gradient, the real checkout channel */
+  .btn-instagram {
+    @apply btn text-white active:scale-[0.98];
+    background-image: linear-gradient(95deg, #515bd4 0%, #8134af 25%, #dd2a7b 55%, #f58529 100%);
+    background-size: 140% 100%;
+    background-position: 0% 0%;
+    transition:
+      background-position 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-instagram:hover {
+    background-position: 100% 0%;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:-bottom-0.5 after:left-0 after:h-px
+      after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-luxe
+      hover:after:w-full;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-sand;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full animate-shimmer
+      bg-gradient-to-r from-transparent via-white/60 to-transparent;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}

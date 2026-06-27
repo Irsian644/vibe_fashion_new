@@ -1,0 +1,23 @@
+// Central icon re-exports so the whole app uses one consistent (Lucide) icon set.
+export {
+  ShoppingBag as Bag,
+  Truck,
+  ShieldCheck,
+  RotateCcw,
+  Heart,
+  Star,
+  ChevronRight,
+  ChevronLeft,
+  Plus,
+  Minus,
+  Check,
+  Sparkles,
+  MessageCircle,
+  Instagram,
+  Mail,
+  MapPin,
+  ArrowRight,
+  X,
+  Search,
+  ZoomIn,
+} from "lucide-react";
